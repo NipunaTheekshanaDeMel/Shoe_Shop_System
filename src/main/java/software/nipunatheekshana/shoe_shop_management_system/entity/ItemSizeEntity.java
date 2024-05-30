@@ -1,23 +1,23 @@
 package software.nipunatheekshana.shoe_shop_management_system.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Entity
 @Table(name = "item_size")
 public class ItemSizeEntity {
     @Id
     private String itemSizeId;
     private Integer qty;
-    private Double buyingPrice;
-    private Double sellingPrice;
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "itemCode", nullable = false)
@@ -26,8 +26,7 @@ public class ItemSizeEntity {
     @JsonBackReference
     @JoinColumn(name = "sizeId", nullable = false)
     private SizeEntity sizeEntity;
-
-//    @OneToMany(mappedBy = "itemSizeEntity")
-//    @JsonManagedReference
-//    private List<SaleDetailsEntity> saleDetailsEntities;
+    @OneToMany(mappedBy = "itemSizeEntity")
+    @JsonManagedReference
+    private List<SaleDetailsEntity> saleDetailsEntities;
 }

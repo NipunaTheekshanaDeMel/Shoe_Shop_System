@@ -10,6 +10,7 @@ import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Gender
 import software.nipunatheekshana.shoe_shop_management_system.entity.enums.OccasionType;
 import software.nipunatheekshana.shoe_shop_management_system.entity.enums.VerityType;
 
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,6 +30,8 @@ public class ItemEntity implements SuperEntity{
     private OccasionType occasionType;
     @Enumerated(EnumType.STRING)
     private VerityType verityType;
+    private Double buyingPrice;
+    private Double sellingPrice;
     @OneToMany(mappedBy = "itemEntity", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<ItemSizeEntity> itemSizeEntities;
@@ -37,4 +40,3 @@ public class ItemEntity implements SuperEntity{
     @JoinColumn(name = "supplierId", nullable = false)
     private SupplierEntity supplierEntity;
 }
-
