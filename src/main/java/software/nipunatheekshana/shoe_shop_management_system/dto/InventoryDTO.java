@@ -8,18 +8,19 @@ import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Occasi
 import software.nipunatheekshana.shoe_shop_management_system.entity.enums.VerityType;
 
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ItemDTO {
+public class InventoryDTO {
     private String itemCode;
     private String itemDesc;
     private String itemPic;
     private Gender gender;
     private OccasionType occasionType;
     private VerityType verityType;
-    private Integer qty;
-    private Integer size;
+    private List<ItemSizeDTO> itemSizeDTOS;
     private String supplierId;
     private String supplierName;
     private Double sellingPrice;
