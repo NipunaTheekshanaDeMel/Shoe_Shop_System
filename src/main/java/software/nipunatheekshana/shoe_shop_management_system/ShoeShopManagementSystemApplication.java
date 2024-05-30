@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ShoeShopManagementSystemApplication {
-
     @Bean
     ModelMapper modelMapper(){
         return new ModelMapper();
@@ -16,6 +15,9 @@ public class ShoeShopManagementSystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShoeShopManagementSystemApplication.class, args);
     }
+
+
+
 
 
 }
