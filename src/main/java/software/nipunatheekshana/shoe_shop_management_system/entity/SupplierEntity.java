@@ -1,10 +1,14 @@
 package software.nipunatheekshana.shoe_shop_management_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Category;
+
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,18 +17,15 @@ import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Catego
 @Entity
 public class SupplierEntity implements SuperEntity{
     @Id
-    private String supplierCode;
-    private String name;
+    private String supplierId;
+    private String supplierName;
     @Enumerated(EnumType.STRING)
-    private Category category;
-    private String addressNo;
-    private String lane;
-    private String mainCity;
-    private String mainState;
-    private String postalCode;
-    private String country;
-    private String mobileNumber;
-    private String landlineNumber;
-    @Column(unique = true)
+    private Category supplierCategory;
+    private String address;
+    private String contact1;
+    private String contact2;
     private String email;
+    @OneToMany(mappedBy = "supplierEntity", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<ItemEntity> itemEntities;
 }
