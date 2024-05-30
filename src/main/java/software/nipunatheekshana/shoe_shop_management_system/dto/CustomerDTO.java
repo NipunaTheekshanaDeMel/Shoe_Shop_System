@@ -7,27 +7,32 @@ import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Gender
 import software.nipunatheekshana.shoe_shop_management_system.entity.enums.Level;
 
 
-import java.sql.Timestamp;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
+
+
+
 import java.util.Date;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class CustomerDTO {
-    private String customerCode;
+    private String customerId;
     private String name;
     private Gender gender;
-    private Date joinDate;
-    private Level level;
-    private int totalPoints;
+    @PastOrPresent(message = "Join date must be in the past or present")
+    private Date joinedDate;
+    @Past(message = "Date of birth should be in the past")
     private Date dob;
-    private String addressNo;
-    private String lane;
-    private String mainCity;
-    private String mainState;
-    private String postalCode;
-    private String contactNumber;
+    private String address;
+    @Pattern(regexp = "^\\+?[0-9\\-\\s]+$", message = "Invalid contact number format")
+    private String contact;
+    @Email(message = "Invalid email format")
     private String email;
-    private Timestamp recentPurchaseDate;
+    //TODO: get tha last purchase date with sale entity
+    private Date lastSaleDate;
 }
-
